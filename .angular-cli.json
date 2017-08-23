@@ -9,7 +9,11 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "background.js",
+        "manifest.json",
+	"lib/Recorderjs-master/recorder.js",
+	"lib/Recorderjs-master/recorderWorker.js"
       ],
       "index": "index.html",
       "main": "main.ts",

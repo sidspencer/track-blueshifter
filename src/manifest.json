@@ -1,12 +1,12 @@
 {
-  // Required
-  "app": {
-    "background": {
-      // Optional
-      "scripts": ["background.js"]
-    }
-  },
   "manifest_version": 2,
   "name": "track-blueshifter",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "permissions": [
+    "activeTab"
+  ],
+  "browser_action": {
+    "default_popup": "index.html"
+  }
 }
