@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: black;
+    color: limegreen;
+    font-family: monospace;
+}
+
+button {
+    color: limegreen;
+    background-color: black;
+    border-radius: 1em;
+    border: 1px solid limegreen;
+}

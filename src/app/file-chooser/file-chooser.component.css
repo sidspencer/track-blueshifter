@@ -1,0 +1,5 @@
+div.fileChooser > input {
+    background-color: black;
+    font-family: monospace;
+    color: limegreen;
+}

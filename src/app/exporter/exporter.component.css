@@ -1,0 +1,7 @@
+a.exportLink::before {
+    content: "[";
+}
+
+a.exportLink::after {
+    content: "]";
+}
