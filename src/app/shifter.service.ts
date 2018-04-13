@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { EQService } from './eq.service';
 
 declare var Recorder: any;
 declare var AudioContext: any;
@@ -12,8 +13,11 @@ export class ShifterService {
   recorder: any;
   isPlaying: boolean;
   shiftedTrackUrl: String;
+  audioContext: any;
 
-  constructor() { }
+  constructor(private eqService: EQService) { 
+    this.audioContext = new (AudioContext || webkitAudioContext)();
+  }
 
   public setTrackFile(file: File) {
     this.trackFile = file;
@@ -23,15 +27,14 @@ export class ShifterService {
     this.playbackRate = rate;
   }
 
-  public playTrack() {
-    var audioContext = new (AudioContext || webkitAudioContext)();
-    
-    // Connect the buffer source for playing, and the stream destination for saving.
-    this.bufferSource = audioContext.createBufferSource();
-    this.bufferSource.connect(audioContext.destination);
+  public getAudioContext() {
+    return Promise.resolve(this.audioContext);
+  }
 
-    var output = audioContext.createMediaStreamDestination();
-    var outputChunks = [];
+  public playTrack() {    
+    // Connect the buffer source for playing, and the stream destination for saving.
+    this.bufferSource = this.audioContext.createBufferSource();
+    this.bufferSource.connect(this.audioContext.destination);
 
     this.recorder = new Recorder(this.bufferSource, { "workerPath": "lib/Recorderjs-master/recorderWorker.js" });
 
@@ -39,11 +42,14 @@ export class ShifterService {
     var reader = new FileReader();
 
     reader.onload = (ev: any) => {
-        audioContext.decodeAudioData(ev.target.result, (buffer: AudioBuffer) => {
+      this.audioContext.decodeAudioData(ev.target.result, (buffer: AudioBuffer) => {
             this.bufferSource.buffer = buffer;
 
-            // This is the nightcoring.
+            // This is the shifting.
             this.bufferSource.playbackRate.value = this.playbackRate;
+
+            // set the EQ
+            
                 
             // Automatically stop at the end of the track.
             this.bufferSource.onended = (evt: Event) => {
@@ -67,6 +73,7 @@ export class ShifterService {
     this.recorder.exportWAV(
         (blob: Blob) => {
             this.shiftedTrackUrl = URL.createObjectURL(blob);
+            this.audioContext = new (AudioContext || webkitAudioContext)();            
         },
         "audio/mp3"
     );

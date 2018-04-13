@@ -1,0 +1,10 @@
+div.playbackRateArea > input {
+    background-color: black;
+    color: limegreen;
+    width: 3em;
+    height: 1.5em;
+    border-radius: 0.5em;
+    border: 1px dashed limegreen;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}

@@ -1,3 +1,18 @@
-<p>
-  (equalizer goes here)
-</p>
+<div>
+  <h4>EQ</h4>
+
+  <div>
+    <label for="lowRangeInput">Low Range:</label>
+    <input #lowRangeInput type="range" min="-40" max="40" [value]="lowRange" (change)="setLowRange()" /> 
+  </div>
+
+  <div>
+    <label for="midRangeInput">Mid Range:</label>
+    <input #midRangeInput type="range" min="-40" max="40" [value]="midRange" (change)="setMidRange()" /> 
+  </div>
+
+  <div>
+    <label for="highRangeInput">High Range:</label>
+    <input #highRangeInput type="range" min="-40" max="40" [value]="highRange" (change)="setHighRange()" /> 
+  </div>
+</div>

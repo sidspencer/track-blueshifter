@@ -10,6 +10,7 @@ import { ExporterComponent } from './exporter/exporter.component';
 import { SettingsAreaComponent } from './settings-area/settings-area.component';
 
 import { ShifterService } from './shifter.service';
+import { EQService } from './eq.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ShifterService } from './shifter.service';
     BrowserModule
   ],
   providers: [
-    ShifterService
+    ShifterService,
+    EQService
   ],
   bootstrap: [AppComponent]
 })

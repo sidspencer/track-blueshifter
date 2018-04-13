@@ -1,0 +1,28 @@
+div.settingsArea {
+    border: 2px solid limegreen;
+    border-radius: 20px;
+    box-shadow: limegreen 0 0 50px 5px inset;
+    padding: 25px;
+}
+
+div.fileChooserHolder {
+    color: inherit;
+    background-color: inherit;
+    margin-bottom: 1em;
+}
+
+div.playbackRateHolder {
+    margin: 1em 0 1em 0;
+}
+
+div.eqHolder {
+    margin: 1em 0 1em 0;
+}
+
+div.playbackButtonsHolder {
+    margin: 1em 0 1em 0;
+}
+
+div.exporterHolder {
+    margin-top: 1em;
+}
