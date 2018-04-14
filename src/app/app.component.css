@@ -1,4 +1,21 @@
 div.settingsHolder {
-    width: 50%;
     margin: auto;
+}
+
+@media(max-width: 480px) {
+    div.settingsHolder {
+        width: 95%;
+    }
+}
+
+@media(min-width: 481px) and (max-width: 768px) {
+    div.settingsHolder {
+        width: 70%;
+    }
+}
+
+@media(min-width: 769px) {
+    div.settingsHolder {
+        width: 50%;
+    }
 }
