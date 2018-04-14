@@ -16,7 +16,7 @@ export class ShifterService {
   audioContext: any;
 
   constructor(private eqService: EQService) { 
-    this.audioContext = new (AudioContext || webkitAudioContext)();
+    this.audioContext = new webkitAudioContext();
   }
 
   public setTrackFile(file: File) {
